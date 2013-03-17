@@ -1,7 +1,7 @@
 #sidebar TableOfContents
 
   * [Introduction Introduction]
-    * [Introduction#What_is_Inno_Media_Player What is Inno JSON Parser]
+    * [Introduction#What_is_Inno_JSON_Parser What is Inno JSON Parser]
     * [Introduction#Features Features]
   * [Reference Reference]
     * [Reference#DSGetLastError DSGetLastError]
