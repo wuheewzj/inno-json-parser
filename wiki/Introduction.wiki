@@ -7,8 +7,8 @@ of JSON parsing capabilities. It's written in Delphi 2009, based on very well kn
 
 == Features ==
 
-  * it is possible to _embed_ the video player window into every *[http://msdn.microsoft.com/en-us/library/windows/desktop/bb773173%28v=vs.85%29.aspx window control]* in the setup wizard form
-  * it supports to play audio and video files for which you have installed codecs (for list of built-in formats *[http://msdn.microsoft.com/en-us/library/windows/desktop/dd407173%28v=vs.85%29.aspx see here]*)
+  * create and edit *[http://www.json.org/ JSON]* files
+  * read and write Unicode string, boolean, integer and float values using value paths
 
 == Reference content ==
 
