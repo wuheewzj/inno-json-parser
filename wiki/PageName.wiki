@@ -1,4 +1,4 @@
-[https://code.google.com/p/inno-media-player/ http://inno-media-player.googlecode.com/svn/wiki/logo_inno_json_parser.png]
+[https://code.google.com/p/inno-json-parser/ http://inno-json-parser.googlecode.com/svn/wiki/logo_inno_json_parser.png]
 
 == What is Inno JSON Parser ==
 
