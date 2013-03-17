@@ -1,0 +1,15 @@
+#sidebar TableOfContents
+
+  * [Introduction Introduction]
+    * [Introduction#What_is_Inno_Media_Player What is Inno Media Player]
+    * [Introduction#Features Features]
+  * [Reference Reference]
+    * [Reference#DSGetLastError DSGetLastError]
+    * [Reference#DSInitializeAudioFile DSInitializeAudioFile]
+    * [Reference#DSInitializeVideoFile DSInitializeVideoFile]
+    * [Reference#DSPlayMediaFile DSPlayMediaFile]
+    * [Reference#DSStopMediaPlay DSStopMediaPlay]
+    * [Reference#DSPauseMediaPlay DSPauseMediaPlay]
+    * [Reference#DSSetVolume DSSetVolume]
+    * [Reference#DSSetBalance DSSetBalance]
+    * [Reference#TDirectShowEventProc TDirectShowEventProc]
