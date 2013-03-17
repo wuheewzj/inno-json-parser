@@ -1,0 +1,217 @@
+[https://code.google.com/p/inno-media-player/ http://inno-media-player.googlecode.com/svn/wiki/logo_inno_media_player.png]
+
+== Reference content ==
+
+ * [#DSGetLastError DSGetLastError] function - get information about the last error occurred
+ * [#DSInitializeAudioFile DSInitializeAudioFile] function - initialize media player for audio playback
+ * [#DSInitializeVideoFile DSInitializeVideoFile] function - initialize media player for video playback
+ * [#DSPlayMediaFile DSPlayMediaFile] function - play the initialized media file
+ * [#DSStopMediaPlay DSStopMediaPlay] function - stop the media stream playback and uninitialize DirectShow interfaces
+ * [#DSPauseMediaPlay DSPauseMediaPlay] function - pause the initialized media file playback
+ * [#DSSetVolume DSSetVolume] function - adjust media stream playback volume
+ * [#DSSetBalance DSSetBalance] function - adjust media stream audio signal balance
+
+ * [#TDirectShowEventProc TDirectShowEventProc] callback function - player state change callback
+
+<br>
+----
+== DSGetLastError ==
+
+This function is used to obtain the information about the last error that occurred when calling some of the functions of the library. As the result you will get the last error code and to the declared string parameter the error message.
+
+*Delphi prototype:*
+
+<code>function DSGetLastError(var ErrorText: PWideChar): HRESULT; stdcall;</code>
+
+*InnoSetup import prototype:*
+
+<code>function DSGetLastError(var ErrorText: WideString): HRESULT;
+ external 'DSGetLastError@mediaplayer.dll stdcall';</code>
+
+*Parameters*
+
+ # ErrorText [[WideString]] - the string buffer that receives the error message
+
+*Result*
+
+The function returns the HRESULT error code of the last error that occurred when calling some of the functions of the library. If the returned value is S_OK, it means the last function call succeeded and that the called function returned True.
+
+<br>
+----
+== DSInitializeAudioFile ==
+
+This function initializes DirectShow interfaces for audio file playback. In fact it is the same as the [#DSInitializeVideoFile DSInitializeVideoFile] function except that this one doesn't have video window related parameters.
+
+*Delphi prototype:*
+
+<code>function DSInitializeAudioFile(FileName: PWideChar;
+ CallbackProc: TDirectShowEventProc): Boolean; stdcall;</code>
+
+*InnoSetup import prototype:*
+
+<code>function DSInitializeAudioFile(FileName: WideString;
+ CallbackProc: TDirectShowEventProc): Boolean;
+ external 'DSInitializeAudioFile@mediaplayer.dll stdcall';</code>
+
+*Parameters*
+
+ # FileName [[WideString]] - the full path to the audio file. In the InnoSetup script you can use temporary files extracted during the wizard form is shown<br>
+ # CallbackProc [[TDirectShowEventProc]] - pointer to the callback function used to get notification about the player states
+
+*Result*
+
+If the function succeeds, the return value is True, False otherwise. To get the error information at failure, call the [#DSGetLastError DSGetLastError].
+
+<br>
+----
+== DSInitializeVideoFile ==
+
+This function initializes DirectShow interfaces for video file playback. It initializes the video window specified by passed window handle for video renderer either in size you specify (if the width and height you pass to this function call are different from 0) or in the size of the video (if the width or height you pass to this function call is 0).
+
+*Delphi prototype:*
+
+<code>function DSInitializeVideoFile(const FileName: PWideChar;
+ WindowHandle: HWND; var Width, Height: Integer;
+ CallbackProc: TDirectShowEventProc): Boolean; stdcall;</code>
+
+*InnoSetup import prototype:*
+
+<code>function DSInitializeVideoFile(FileName: WideString;
+ WindowHandle: HWND; var Width, Height: Integer;
+ CallbackProc: TDirectShowEventProc): Boolean;
+ external 'DSInitializeVideoFile@mediaplayer.dll stdcall';</code>
+
+*Parameters*
+
+ # FileName [[WideString]] - the full path to the video file. In the InnoSetup script you can use temporary files extracted during the wizard form is shown<br>
+ # WindowHandle [[HWND]] - the handle to the window that will video renderer use for rendering<br>
+ # Width [[Integer]] - the requested width of the rendered video window; when you set this value to 0, the frame size of the video file will be used for rendering and you will receive the width of the rendered video window into this parameter; when Width and Height parameters are non zero, the video renderer will stretch the image into the specified size<br>
+ # Height [[Integer]] - the requested height of the rendered video window; when you set this value to 0, the frame size of the video file will be used for rendering and you will receive the height of the rendered video window into this parameter; when Width and Height parameters are non zero, the video renderer will stretch the image into the specified size<br>
+ # CallbackProc [[TDirectShowEventProc]] - pointer to the callback function used to get notification about the player states
+
+*Result*
+
+If the function succeeds, the return value is True, False otherwise. To get the error information at failure, call the [#DSGetLastError DSGetLastError].
+
+<br>
+----
+== DSPlayMediaFile ==
+
+This function is used to play the media stream initialized by the [#DSInitializeAudioFile DSInitializeAudioFile] or [#DSInitializeVideoFile DSInitializeVideoFile] function call.
+
+*Delphi prototype:*
+
+<code>function DSPlayMediaFile: Boolean; stdcall;</code>
+
+*InnoSetup import prototype:*
+
+<code>function DSPlayMediaFile: Boolean; external
+ 'DSPlayMediaFile@mediaplayer.dll stdcall';</code>
+
+*Result*
+
+If the function succeeds, the return value is True, False otherwise. To get the error information at failure, call the [#DSGetLastError DSGetLastError].
+
+<br>
+----
+== DSStopMediaPlay ==
+
+This function is used to stop the media stream playback and uninitialize DirectShow interfaces initialized by the [#DSInitializeAudioFile DSInitializeAudioFile] or [#DSInitializeVideoFile DSInitializeVideoFile] function call. It is important to call this function before the InnoSetup wizard form uninitialize, e.g. in DeinitializeSetup event handler.
+
+*Delphi prototype:*
+
+<code>function DSStopMediaPlay: Boolean; stdcall;</code>
+
+*InnoSetup import prototype:*
+
+<code>function DSStopMediaPlay: Boolean;
+ external 'DSStopMediaPlay@mediaplayer.dll stdcall';</code>
+
+*Result*
+
+If the function succeeds, the return value is True, False otherwise. To get the error information at failure, call the [#DSGetLastError DSGetLastError].
+
+<br>
+----
+== DSPauseMediaPlay ==
+
+This function is used to pause the media stream playback started by the [#DSPlayMediaFile DSPlayMediaFile] function call. Unlike the [#DSStopMediaPlay DSStopMediaPlay] function, this one keeps the media stream with DirectShow interfaces initialized.
+
+*Delphi prototype:*
+
+<code>function DSPauseMediaPlay: Boolean; stdcall;</code>
+
+*InnoSetup import prototype:*
+
+<code>function DSPauseMediaPlay: Boolean;
+ external 'DSPauseMediaPlay@mediaplayer.dll stdcall';</code>
+
+*Result*
+
+If the function succeeds, the return value is True, False otherwise. To get the error information at failure, call the [#DSGetLastError DSGetLastError].
+
+<br>
+----
+== DSSetVolume ==
+
+This function is used to adjust the media stream playback volume in dB.
+
+*Delphi prototype:*
+
+<code>function DSSetVolume(Value: LongInt): Boolean; stdcall;</code>
+
+*InnoSetup import prototype:*
+
+<code>function DSSetVolume(Value: LongInt): Boolean;
+ external 'DSSetVolume@files:mediaplayer.dll stdcall';</code>
+
+*Parameters*
+
+ # Value [[LongInt]] - the playback volume level in a range from –10,000 to 0 in logarithmic scale, where 0 means full volume and -10,000 silence; this value is a decibel level multiplied by 100, where -10,000 means –100 dB
+
+*Result*
+
+If the function succeeds, the return value is True, False otherwise. To get the error information at failure, call the [#DSGetLastError DSGetLastError].
+
+<br>
+----
+== DSSetBalance ==
+
+This function is used to adjust the media stream audio signal balance.
+
+*Delphi prototype:*
+
+<code>function DSSetBalance(Value: LongInt): Boolean; stdcall;</code>
+
+*InnoSetup import prototype:*
+
+<code>function DSSetBalance(Value: LongInt): Boolean;
+ external 'DSSetBalance@files:mediaplayer.dll stdcall';</code>
+
+*Parameters*
+
+ # Value [[LongInt]] - the audio signal balance in a range from -10,000 to 10,000, where -10,000 means full volume on left channel, 10,000 full volume on right channel and 0 full volume on both channels
+
+*Result*
+
+If the function succeeds, the return value is True, False otherwise. To get the error information at failure, call the [#DSGetLastError DSGetLastError].
+
+<br>
+----
+== TDirectShowEventProc ==
+
+This callback function is used to get notifications about player state changes. Internally the library uses the IMediaEvent interface to get the events from the event queue. All the events obtained from the event queue (for list of all available events see [http://msdn.microsoft.com/en-us/library/windows/desktop/dd375625%28v=vs.85%29.aspx the reference]) are dispatched by this function call to your setup application.
+
+*Delphi prototype:*
+
+<code>TDirectShowEventProc = procedure(EventCode, Param1, Param2: Integer) of object;</code>
+
+*InnoSetup import prototype:*
+
+<code>TDirectShowEventProc = procedure(EventCode, Param1, Param2: Integer);</code>
+
+*Parameters*
+
+ # EventCode [[Integer]] - event code (see [http://msdn.microsoft.com/en-us/library/windows/desktop/dd375625%28v=vs.85%29.aspx the reference])<br>
+ # Param1 [[Integer]] - first event parameter (event specific)<br>
+ # Param2 [[Integer]] - second event parameter (event specific)<br>
