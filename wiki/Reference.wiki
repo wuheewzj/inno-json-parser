@@ -2,16 +2,21 @@
 
 == Reference content ==
 
- * [#DSGetLastError DSGetLastError] function - get information about the last error occurred
- * [#DSInitializeAudioFile DSInitializeAudioFile] function - initialize media player for audio playback
- * [#DSInitializeVideoFile DSInitializeVideoFile] function - initialize media player for video playback
- * [#DSPlayMediaFile DSPlayMediaFile] function - play the initialized media file
- * [#DSStopMediaPlay DSStopMediaPlay] function - stop the media stream playback and uninitialize DirectShow interfaces
- * [#DSPauseMediaPlay DSPauseMediaPlay] function - pause the initialized media file playback
- * [#DSSetVolume DSSetVolume] function - adjust media stream playback volume
- * [#DSSetBalance DSSetBalance] function - adjust media stream audio signal balance
+ * [#JSONGetLastError JSONGetLastError] function - get information about the last occurred error
+ * [#JSONLoadFromFile JSONLoadFromFile] function - try to load and parse a JSON content from file
+ * [#JSONLoadFromString JSONLoadFromString] function - try to parse a JSON content from string
+ * [#JSONSaveToFile JSONSaveToFile] function - save the JSON content to a file
+ * [#JSONCloseFile JSONCloseFile] function - close and release JSON content
 
- * [#TDirectShowEventProc TDirectShowEventProc] callback function - player state change callback
+ * [#JSONQueryString JSONQueryString] function - query string value of a specified object path
+ * [#JSONQueryBoolean JSONQueryBoolean] function - query boolean value of a specified object path
+ * [#JSONQueryInteger JSONQueryInteger] function - query integer value of a specified object path
+ * [#JSONQueryDouble JSONQueryDouble] function - query floating point value of a specified object path
+
+ * [#JSONWriteString JSONWriteString] function - write or create string value of a specified object path
+ * [#JSONWriteBoolean JSONWriteBoolean] function - write or create boolean value of a specified object path
+ * [#JSONWriteInteger JSONWriteInteger] function - write or create integer value of a specified object path
+ * [#JSONWriteDouble JSONWriteDouble] function - write or create floating point value of a specified object path
 
 <br>
 ----
