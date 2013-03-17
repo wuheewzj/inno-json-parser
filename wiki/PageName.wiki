@@ -1,0 +1,29 @@
+[https://code.google.com/p/inno-media-player/ http://inno-media-player.googlecode.com/svn/wiki/logo_inno_json_parser.png]
+
+== What is Inno JSON Parser ==
+
+Inno JSON Parser is a simple DLL library, which can extend *[http://jrsoftware.org/ishelp/index.php?topic=unicode Unicode versions]* of a famous *[http://www.jrsoftware.org/isinfo.php/ Inno Setup]* installer<br>
+of JSON parsing capabilities. It's written in Delphi 2009, based on very well known *[https://code.google.com/p/superobject/ SuperObject]* JSON parser.
+
+== Features ==
+
+  * it is possible to _embed_ the video player window into every *[http://msdn.microsoft.com/en-us/library/windows/desktop/bb773173%28v=vs.85%29.aspx window control]* in the setup wizard form
+  * it supports to play audio and video files for which you have installed codecs (for list of built-in formats *[http://msdn.microsoft.com/en-us/library/windows/desktop/dd407173%28v=vs.85%29.aspx see here]*)
+
+== Reference content ==
+
+ * [Reference#DSGetLastError DSGetLastError] function - get information about the last error occurred
+ * [Reference#DSInitializeAudioFile DSInitializeAudioFile] function - initialize media player for audio playback
+ * [Reference#DSInitializeVideoFile DSInitializeVideoFile] function - initialize media player for video playback
+ * [Reference#DSPlayMediaFile DSPlayMediaFile] function - play the initialized media file
+ * [Reference#DSStopMediaPlay DSStopMediaPlay] function - stop the media stream playback and uninitialize DirectShow interfaces
+ * [Reference#DSPauseMediaPlay DSPauseMediaPlay] function - pause the initialized media file playback
+ * [Reference#DSSetVolume DSSetVolume] function - adjust media stream playback volume
+ * [Reference#DSSetBalance DSSetBalance] function - adjust media stream audio signal balance
+
+ * [Reference#TDirectShowEventProc TDirectShowEventProc] callback function - player state change callback
+
+== Initial developer ==
+
+<a href="http://stackoverflow.com/users/960757/tlama">
+<img src="http://stackoverflow.com/users/flair/960757.png" width="208" height="58"</a>
