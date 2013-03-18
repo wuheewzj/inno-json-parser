@@ -20,26 +20,26 @@
 
 <br>
 ----
-== DSGetLastError ==
+== JSONGetLastError ==
 
-This function is used to obtain the information about the last error that occurred when calling some of the functions of the library. As the result you will get the last error code and to the declared string parameter the error message.
+This function is used to obtain the information about the last error that occurred when calling some of the functions of this library. As a result you will get the last internal error code and to the declared DWORD parameter last OS error code.
 
 *Delphi prototype:*
 
-<code>function DSGetLastError(var ErrorText: PWideChar): HRESULT; stdcall;</code>
+<code>function JSONGetLastError(var SysError: DWORD): DWORD; stdcall;</code>
 
 *InnoSetup import prototype:*
 
-<code>function DSGetLastError(var ErrorText: WideString): HRESULT;
- external 'DSGetLastError@mediaplayer.dll stdcall';</code>
+<code>function JSONGetLastError(var SysError: DWORD): DWORD;
+ external 'JSONGetLastError@files:jsonparser.dll stdcall';
 
 *Parameters*
 
- # ErrorText [[WideString]] - the string buffer that receives the error message
+ # SysError [[DWORD]] - DWORD parameter which receives the last OS error code
 
 *Result*
 
-The function returns the HRESULT error code of the last error that occurred when calling some of the functions of the library. If the returned value is S_OK, it means the last function call succeeded and that the called function returned True.
+The function returns code of the last internal error that occured when calling some of the functions of the library.
 
 <br>
 ----
