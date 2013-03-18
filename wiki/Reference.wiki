@@ -39,7 +39,7 @@ This function is used to obtain the information about the last error that occurr
 
 *Result*
 
-The function returns code of the last internal error that occured when calling some of the functions of the library.
+The function returns code of the last internal error that occured when calling some of the functions of this library.
 
 <br>
 ----
