@@ -12,16 +12,8 @@ of JSON parsing capabilities. It's written in Delphi 2009, based on very well kn
 
 == Reference content ==
 
- * [Reference#DSGetLastError DSGetLastError] function - get information about the last error occurred
- * [Reference#DSInitializeAudioFile DSInitializeAudioFile] function - initialize media player for audio playback
- * [Reference#DSInitializeVideoFile DSInitializeVideoFile] function - initialize media player for video playback
- * [Reference#DSPlayMediaFile DSPlayMediaFile] function - play the initialized media file
- * [Reference#DSStopMediaPlay DSStopMediaPlay] function - stop the media stream playback and uninitialize DirectShow interfaces
- * [Reference#DSPauseMediaPlay DSPauseMediaPlay] function - pause the initialized media file playback
- * [Reference#DSSetVolume DSSetVolume] function - adjust media stream playback volume
- * [Reference#DSSetBalance DSSetBalance] function - adjust media stream audio signal balance
-
- * [Reference#TDirectShowEventProc TDirectShowEventProc] callback function - player state change callback
+ * [Reference#JSONGetLastError JSONGetLastError]
+ * [Reference#JSONLoadFromFile JSONLoadFromFile]
 
 == Initial developer ==
 
