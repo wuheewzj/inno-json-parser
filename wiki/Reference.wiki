@@ -62,7 +62,7 @@ This function tries to load and parse a JSON content from a specified file.
 
 *Result*
 
-If the function succeeds, the return value is a handle to the JSON parser, INVALID_JSON_HANDLE otherwise. To get extended error information, call [#JSONGetLastError JSONGetLastError].
+If the function succeeds, the return value is an open handle to the JSON parser, INVALID_JSON_HANDLE otherwise. To get extended error information, call [#JSONGetLastError JSONGetLastError].
 
 <br>
 ----
