@@ -43,29 +43,26 @@ The function returns code of the last internal error that occured when calling s
 
 <br>
 ----
-== DSInitializeAudioFile ==
+== JSONLoadFromFile ==
 
-This function initializes DirectShow interfaces for audio file playback. In fact it is the same as the [#DSInitializeVideoFile DSInitializeVideoFile] function except that this one doesn't have video window related parameters.
+This function tries to load and parse a JSON content from a specified file.
 
 *Delphi prototype:*
 
-<code>function DSInitializeAudioFile(FileName: PWideChar;
- CallbackProc: TDirectShowEventProc): Boolean; stdcall;</code>
+<code>function JSONLoadFromFile(FileName: PWideChar): TJSONHandle; stdcall;</code>
 
 *InnoSetup import prototype:*
 
-<code>function DSInitializeAudioFile(FileName: WideString;
- CallbackProc: TDirectShowEventProc): Boolean;
- external 'DSInitializeAudioFile@mediaplayer.dll stdcall';</code>
+<code>function JSONLoadFromFile(FileName: WideString): TJSONHandle;
+  external 'JSONLoadFromFile@files:jsonparser.dll stdcall';</code>
 
 *Parameters*
 
- # FileName [[WideString]] - the full path to the audio file. In the InnoSetup script you can use temporary files extracted during the wizard form is shown<br>
- # CallbackProc [[TDirectShowEventProc]] - pointer to the callback function used to get notification about the player states
+ # FileName [[WideString]] - absolute path to the file to be loaded and parsed like a JSON content.
 
 *Result*
 
-If the function succeeds, the return value is True, False otherwise. To get the error information at failure, call the [#DSGetLastError DSGetLastError].
+If the function succeeds, the return value is a handle to the JSON parser, INVALID_JSON_HANDLE otherwise. To get extended error information, call [#JSONGetLastError JSONGetLastError].
 
 <br>
 ----
